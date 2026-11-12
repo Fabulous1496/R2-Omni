@@ -1,0 +1,14 @@
+model: MiniCPM-o-4.5
+prefill:
+  llm: flash_attention_2
+  vision: flash_attention_2
+  audio: sdpa
+
+r2omni:
+  stc: stc.yaml
+  layer_group_size: 4
+  matched_fp_until_layer: null
+  shallow_v_payload_bit_ceiling: 2.1
+  deep_v_payload_bit_ceiling: 2.0
+  value_int2_group_size: 128
+  key_quantization_superblock: 128

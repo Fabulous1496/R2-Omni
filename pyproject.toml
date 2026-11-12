@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "r2-omni"
+version = "0.2.0"
+description = "R2-Omni: structural and precision redundancy reduction for Omni-LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = [
+  "accelerate>=1.0",
+  "av>=15,<16",
+  "decord==0.6.0",
+  "librosa>=0.9,<0.12",
+  "numpy>=1.26,<2",
+  "pillow>=10,<12",
+  "pyarrow>=16",
+  "pyyaml>=6",
+  "qwen-omni-utils==0.0.9",
+  "soundfile>=0.12",
+  "torch>=2.8,<2.9",
+  "torchvision>=0.23,<0.24",
+  "torchaudio>=2.8,<2.9",
+  "transformers>=4.51,<4.58",
+  "triton>=3.4,<3.5",
+]
+
+[project.optional-dependencies]
+evaluation = ["openai>=1.0", "pydantic>=2.7", "nltk>=3.8"]
+performance = ["flash-attn>=2.7"]
+test = ["pytest>=8"]
+minicpm = ["minicpmo-utils==1.0.6"]
+
+[project.urls]
+Repository = "https://github.com/Fabulous1496/R2-Omni"
+Issues = "https://github.com/Fabulous1496/R2-Omni/issues"
+
+[tool.setuptools.packages.find]
+include = ["r2omni*", "baselines*", "benchmarks*"]

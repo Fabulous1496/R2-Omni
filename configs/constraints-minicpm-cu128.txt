@@ -1,0 +1,16 @@
+# Separate MiniCPM environment; the core matches the inference environment.
+# Media-library versions below follow minicpmo-utils 1.0.6 package requirements.
+# They are dependency-compatible pins, not an additional GPU validation claim.
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
+transformers==4.51.0
+triton==3.4.0
+numpy==1.26.4
+minicpmo-utils==1.0.6
+pillow==10.4.0
+librosa==0.9.0
+moviepy==2.1.2
+decord==0.6.0
+qwen-omni-utils==0.0.9
+flash-attn==2.8.3

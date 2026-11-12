@@ -1,0 +1,22 @@
+stc:
+  enabled: true
+  prefill_only: true
+  profile: true
+
+  video:
+    enabled: true
+    neighborhood: 8
+    region_cos_threshold: 0.70
+    frame_sim_threshold: 0.70
+    min_region_size: 2
+    max_region_size: 128
+    residual_anchors_per_region: 0
+    isolated_policy: mean_cosine_distance_topk
+    # Preserve every visual token outside a spatial aggregation region.
+    isolated_keep_ratio: 1.00
+
+  audio:
+    enabled: true
+    chunk_tokens: 50
+    pair_merge_threshold: 0.80
+    max_pair_merge_ratio: 0.50

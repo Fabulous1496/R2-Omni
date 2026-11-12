@@ -1,0 +1,5 @@
+method: R2-Omni
+model: Qwen2.5-Omni-7B
+stc: stc.yaml
+sspa: sspa_7b.yaml
+execution_order: [stc, prefill, sspa, fused_low_bit_decode]

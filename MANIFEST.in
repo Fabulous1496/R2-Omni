@@ -1,0 +1,6 @@
+include README.md LICENSE THIRD_PARTY_NOTICES.md requirements.txt
+recursive-include configs *.yaml *.json *.txt
+recursive-include scripts *.py *.sh
+recursive-include docs *.md
+recursive-include third_party *LICENSE* README.md
+global-exclude __pycache__ *.py[cod] *.so

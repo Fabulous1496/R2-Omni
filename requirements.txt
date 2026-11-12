@@ -1,0 +1,3 @@
+# Install from the repository root. Use scripts/base/setup.sh for the tested
+# Qwen constraints or scripts/base/setup.sh --minicpm for MiniCPM.
+-e .[evaluation]

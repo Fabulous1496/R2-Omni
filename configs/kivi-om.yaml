@@ -1,0 +1,29 @@
+method: kivi-om
+upstream:
+  repository: https://github.com/jy-yuan/KIVI
+
+profiles:
+  qwen2.5-omni-3b:
+    implementation: legacy
+    k_bits: 2
+    v_bits: 2
+    group_size: 128
+    residual_length: 1152
+    fp_prefix_layers: 0
+  qwen2.5-omni-official:
+    implementation: official
+    k_bits: 2
+    v_bits: 2
+    # Values used by the pinned upstream repository's example.py.
+    group_size: 32
+    residual_length: 32
+    fp_prefix_layers: 0
+  qwen2.5-omni-7b:
+    implementation: official
+    k_bits: 2
+    v_bits: 2
+    group_size: 128
+    residual_length: 1152
+    fp_prefix_layers: 1
+    host_dtype: float16
+    readout_backend: native_packed

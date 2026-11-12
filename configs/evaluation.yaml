@@ -1,0 +1,23 @@
+processor_input_cache: false
+batch_size: 1
+decoding: greedy
+stop_on_eos: true
+prefill_attention: flash_attention_2
+
+benchmarks:
+  video_salmonn2:
+    frame_sampling: uniform
+    frames: 128
+    max_new_tokens: 1024
+    scoring: official_video_salmonn2
+  longvale:
+    frame_sampling: uniform
+    frames: 100
+    max_new_tokens: 1024
+    scoring: official_longvale
+  omnidcbench:
+    frame_sampling: fps
+    fps: 2
+    max_frames: 160
+    max_new_tokens: 8192
+    scoring: official_temporal_and_qwen3.6-plus_semantic

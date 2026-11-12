@@ -1,0 +1,54 @@
+# Qwen2.5-Omni-7B configuration.
+sspa:
+  enabled: true
+  method: SSPA
+  backend: r2omni
+  cache_variant: int4_k_tiered_v
+
+  layers:
+    strategy: block
+    start_layer: 0
+    end_layer: 27
+    assignment_group_size: 4
+    # The first two 7B layers are substantially more sensitive to cumulative
+    # cache quantization. Keep them in the matched BF16 cache and apply SSPA
+    # to layers 2--27.
+    matched_fp_until_layer: 1
+
+  scoring:
+    attention_weight: 0.60
+    av_alignment_topk: 4
+    query_anchor_count: 8
+    query_anchor_reduction: ema
+    query_anchor_ema_decay: 0.8
+    semantic_priority_weight: 0.75
+
+  precision_allocation:
+    residual_allocation_rounds: 4
+    k_conditioned_iterations: 2
+    residual_query_cvar_fraction: 0.25
+    residual_transition_weight: 0.50
+    output_priority_weight: 0.25
+    video_precision_weight: 0.60
+    audio_precision_weight: 1.80
+
+  cache:
+    page_size: 32
+    precision_sigmoid_steepness: 8.0
+    shallow_v_payload_bit_ceiling: 3.6
+    deep_v_payload_bit_ceiling: 3.0
+    recent_fp_window: 128
+
+  quantization:
+    key_all_historical_tokens: int4
+    key_preconditioner: hadamard_head_dim
+    key_quantization_superblock: 32
+    value_tiers: [bf16, int4, int2]
+    value_preconditioner: hadamard_head_dim
+    int2_group_size: 32
+
+  kernel:
+    backend: triton_mixed_fused_splitk
+    tensor_core_mode: qk
+    hierarchical_reduce: true
+    hierarchical_group_blocks: 64
